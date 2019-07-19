@@ -10,3 +10,29 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
+
+.base {
+  color: rgb(150, 26, 26);
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.content-section-dark {
+  background: rgba(255,255,255,0.7);
+  /* rgba(208,47,47,0.7);*/
+}
+
+.title {
+  color: rgb(202,22,22);
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.home-box {
+  color: white;
+  background-color: rgba(50,50,50,0.4);
+}
+
+.title-content {
+  background-color: rgba(150,150,150,0.4);
+}

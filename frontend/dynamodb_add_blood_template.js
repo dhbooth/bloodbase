@@ -26,6 +26,7 @@ currUser.getUserAttributes(function(err, result) {
 		return;
 	}
 	
+	//check to see what the atttributes are - use one of these to update the DB
 	for(i = 0; i < result.length; i ++) {
 		console.log("name:" + result[i].getName() + ", value: " + result[i].getValue()); 
 	}

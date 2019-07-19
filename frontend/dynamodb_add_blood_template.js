@@ -1,13 +1,42 @@
 var AWS = require("aws-sdk");
-
+var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 AWS.config.update({
 	region: "us-east-1",
 	endpoint: "http://localhost:8000"
 });
 
+/*
+* TODO: Add Amazon Cognito userpool token authentication
+*/
+
+var poolData = {
+	userPoolID : "...", //TBD
+	clientID: "..." //TBD
+};
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+var currUser = userPool.getCurrentUser();
+
+if(currUser == null) {
+	console.log("Error: No current user");
+} 
+
+currUser.getUserAttributes(function(err, result) {
+	if(err) {
+		alert(err);
+		return;
+	}
+	
+	for(i = 0; i < result.length; i ++) {
+		console.log("name:" + result[i].getName() + ", value: " + result[i].getValue()); 
+	}
+});
+
+
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 var table = "bloodBase";
+
+var hrrNum = 0; //how to get this num?
 
 var params = {
 	TableName: table,

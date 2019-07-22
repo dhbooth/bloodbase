@@ -1,4 +1,7 @@
-function updateDB(type, charge, amntNum, units) {
+function updateDB(type, charge, amnt, units) {
+	//these are for tests
+	alert(type + " " + charge + " " + amnt + " " + units);
+	return;
 	var AWS = require("aws-sdk");
 	var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 	AWS.config.update({

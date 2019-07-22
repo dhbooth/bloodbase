@@ -1,7 +1,8 @@
 function updateDB(type, charge, amnt, units) {
 	//these are for tests
-	alert(type + " " + charge + " " + amnt + " " + units);
-	return;
+	if(units == 'L') {
+		amnt = amnt * 1000; //keep blood in milliliters
+	}
 	var AWS = require("aws-sdk");
 	var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
 	AWS.config.update({
@@ -9,10 +10,10 @@ function updateDB(type, charge, amnt, units) {
 		endpoint: "http://localhost:8000"
 	});
 
-	/*
-	* TODO: Add Amazon Cognito userpool token authentication
-	*/
-
+	
+	
+	//Need this data to go any further
+	
 	var poolData = {
 		userPoolID : "...", //TBD
 		clientID: "..." //TBD
@@ -35,13 +36,13 @@ function updateDB(type, charge, amnt, units) {
 			console.log("name:" + result[i].getName() + ", value: " + result[i].getValue()); 
 		}
 	});
-
-
+	
+	
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
 	var table = "bloodBase";
 
-	var hrrNum = 0; //how to get this num?
+	//var hrrNum = 0; //how to get this num?
 
 	var params = {
 		TableName: table,

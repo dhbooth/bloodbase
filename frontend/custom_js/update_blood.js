@@ -40,8 +40,8 @@ function updateDB(type, charge, amnt, units) {
 	
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
-	var table = "bloodBase";
-
+	var table = "bloodbase";
+	
 	//var hrrNum = 0; //how to get this num?
 
 	var params = {
@@ -49,7 +49,7 @@ function updateDB(type, charge, amnt, units) {
 	};
 
 	console.log("Adding a new item...");
-
+	//use updateItem function call
 	docClient.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
